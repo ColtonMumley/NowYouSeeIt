@@ -23,6 +23,12 @@ public class ColorManager : MonoBehaviour
             
     }
 
+    public void Reset() {
+        player.GetComponent<SpriteRenderer>().color = Color.white;
+        mainCam.backgroundColor = Color.black;
+        disablePlatforms(Color.black, Color.white);
+    }
+
     // Changes Player and Background colors
     void SwitchColors() {
         if (player.GetComponent<SpriteRenderer>().color == Color.white) {
