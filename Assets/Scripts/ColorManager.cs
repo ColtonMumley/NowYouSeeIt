@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ColorManager : MonoBehaviour
 {
@@ -17,12 +18,14 @@ public class ColorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
+        // If left click and not hovering over a button
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
             SwitchColors();
         }
             
     }
 
+    // Reset level back to original colors
     public void Reset() {
         player.GetComponent<SpriteRenderer>().color = Color.white;
         mainCam.backgroundColor = Color.black;
