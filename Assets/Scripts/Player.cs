@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         hInput = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && rb.velocity.y < 0.001)
+        if (Input.GetKeyDown(KeyCode.W) && isGrounded && rb.velocity.y < 0.001)
         {
             jumpInput = true;
         }

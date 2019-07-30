@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.EventSystems;
 
 public class ColorManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class ColorManager : MonoBehaviour
 
     public GameObject player;
     public Camera mainCam;
+    public TextMeshProUGUI worldText;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +20,10 @@ public class ColorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If left click and not hovering over a button
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+        // TODO: implement Mouse Button instead of Space Key
+        /* If left click and not hovering over a button
+           Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() */
+        if (Input.GetKeyDown(KeyCode.Space)) {
             SwitchColors();
         }
             
@@ -29,6 +33,7 @@ public class ColorManager : MonoBehaviour
     public void Reset() {
         player.GetComponent<SpriteRenderer>().color = Color.white;
         mainCam.backgroundColor = Color.black;
+        worldText.color = Color.white;
         disablePlatforms(Color.black, Color.white);
     }
 
@@ -43,8 +48,10 @@ public class ColorManager : MonoBehaviour
         }
         if (mainCam.backgroundColor == Color.white) {
             mainCam.backgroundColor = Color.black;
+            worldText.color = Color.white;
         } else {
             mainCam.backgroundColor = Color.white;
+            worldText.color = Color.black;
         }
     }
 
